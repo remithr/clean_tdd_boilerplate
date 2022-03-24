@@ -2,18 +2,18 @@
 // in clear_architecture/test/features/user_authentication/domain/usecases/fetch_user_details_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i5;
+import 'dart:async' as _i4;
 
-import 'package:clear_architecture/core/error/failures.dart' as _i6;
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart'
+import 'package:clear_architecture/core/error/failures.dart' as _i5;
+import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart'
+    as _i6;
+import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart'
     as _i7;
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_id_param.dart'
+import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart'
     as _i8;
 import 'package:clear_architecture/features/user_authentication/domain/repositories/user_repository.dart'
-    as _i2;
-import 'package:clear_architecture/features/user_authentication/domain/usecases/fetch_user_details.dart'
-    as _i4;
-import 'package:dartz/dartz.dart' as _i3;
+    as _i3;
+import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -26,28 +26,36 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeUserRepository_0 extends _i1.Fake implements _i2.UserRepository {}
+class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
-class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
-
-/// A class which mocks [FetchUserDetails].
+/// A class which mocks [UserRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFetchUserDetails extends _i1.Mock implements _i4.FetchUserDetails {
-  MockFetchUserDetails() {
+class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
+  MockUserRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.UserRepository get repository =>
-      (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeUserRepository_0()) as _i2.UserRepository);
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthenticationStatus>> loginUser(
+          _i7.UserCredsEntity? params) =>
+      (super.noSuchMethod(Invocation.method(#loginUser, [params]),
+              returnValue: Future<
+                      _i2.Either<_i5.Failure, _i6.AuthenticationStatus>>.value(
+                  _FakeEither_0<_i5.Failure, _i6.AuthenticationStatus>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthenticationStatus>>);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, _i7.UserDetailsEntity>> call(
-          _i8.UserIDParams? params) =>
-      (super.noSuchMethod(Invocation.method(#call, [params]),
+  _i4.Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>> fetchUserDetails(
+          String? userID) =>
+      (super.noSuchMethod(Invocation.method(#fetchUserDetails, [userID]),
               returnValue:
-                  Future<_i3.Either<_i6.Failure, _i7.UserDetailsEntity>>.value(
-                      _FakeEither_1<_i6.Failure, _i7.UserDetailsEntity>()))
-          as _i5.Future<_i3.Either<_i6.Failure, _i7.UserDetailsEntity>>);
+                  Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>>.value(
+                      _FakeEither_0<_i5.Failure, _i8.UserDetailsEntity>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> logoutUser() =>
+      (super.noSuchMethod(Invocation.method(#logoutUser, []),
+              returnValue: Future<_i2.Either<_i5.Failure, bool>>.value(
+                  _FakeEither_0<_i5.Failure, bool>()))
+          as _i4.Future<_i2.Either<_i5.Failure, bool>>);
 }

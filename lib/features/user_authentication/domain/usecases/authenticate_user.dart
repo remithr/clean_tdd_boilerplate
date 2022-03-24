@@ -1,19 +1,21 @@
 import 'package:clear_architecture/core/usecases/usecases.dart';
+import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart';
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/user_details_entity.dart';
+
 import '../repositories/user_repository.dart';
 
-class AuthenticateUser implements UseCase<UserDetailsEntity, UserCredsEntity> {
+class AuthenticateUser
+    implements UseCase<AuthenticationStatus, UserCredsEntity> {
   final UserRepository repository;
   AuthenticateUser({
     required this.repository,
   });
 
   @override
-  Future<Either<Failure, UserDetailsEntity>> call(
+  Future<Either<Failure, AuthenticationStatus>> call(
     UserCredsEntity params,
   ) async {
     // try {

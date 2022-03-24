@@ -5,10 +5,12 @@
 import 'dart:async' as _i4;
 
 import 'package:clear_architecture/core/error/failures.dart' as _i5;
+import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart'
+    as _i6;
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart'
     as _i7;
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart'
-    as _i6;
+    as _i8;
 import 'package:clear_architecture/features/user_authentication/domain/repositories/user_repository.dart'
     as _i3;
 import 'package:dartz/dartz.dart' as _i2;
@@ -35,21 +37,21 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>> loginUser(
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthenticationStatus>> loginUser(
           _i7.UserCredsEntity? params) =>
       (super.noSuchMethod(Invocation.method(#loginUser, [params]),
-              returnValue:
-                  Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>.value(
-                      _FakeEither_0<_i5.Failure, _i6.UserDetailsEntity>()))
-          as _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>);
+              returnValue: Future<
+                      _i2.Either<_i5.Failure, _i6.AuthenticationStatus>>.value(
+                  _FakeEither_0<_i5.Failure, _i6.AuthenticationStatus>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthenticationStatus>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>> fetchUserDetails(
+  _i4.Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>> fetchUserDetails(
           String? userID) =>
       (super.noSuchMethod(Invocation.method(#fetchUserDetails, [userID]),
               returnValue:
-                  Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>.value(
-                      _FakeEither_0<_i5.Failure, _i6.UserDetailsEntity>()))
-          as _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>);
+                  Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>>.value(
+                      _FakeEither_0<_i5.Failure, _i8.UserDetailsEntity>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i8.UserDetailsEntity>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, bool>> logoutUser() =>
       (super.noSuchMethod(Invocation.method(#logoutUser, []),

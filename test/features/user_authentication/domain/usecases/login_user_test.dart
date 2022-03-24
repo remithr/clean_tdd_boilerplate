@@ -1,3 +1,4 @@
+import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart';
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart';
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart';
 import 'package:clear_architecture/features/user_authentication/domain/repositories/user_repository.dart';
@@ -23,20 +24,19 @@ void main() {
 
   const userCreds =
       UserCredsEntity(email: 'rem@yopmail.com', password: '123456');
-  const tUserDetailsRepository = UserDetailsEntity(
-    email: 'remithr@yopmail.com',
-    name: 'Remith ',
+  const tuserAuthentication = AuthenticationStatus(
+    isAuthenticated: true,
     userID: '1',
   );
   //****** */ MOCKITO implementation
-  test('should get user details on login success', () async {
+  test('should return authentication status with userID on success', () async {
     // arrange
     when(mockUserAuthenticationRepository.loginUser(userCreds))
-        .thenAnswer((_) async => const Right(tUserDetailsRepository));
+        .thenAnswer((_) async => const Right(tuserAuthentication));
     // act
     final result = await usecase(userCreds);
     // assert
-    expect(result, const Right(tUserDetailsRepository));
+    expect(result, const Right(tuserAuthentication));
     verify(mockUserAuthenticationRepository.loginUser(userCreds));
     verifyNoMoreInteractions(mockUserAuthenticationRepository);
   });

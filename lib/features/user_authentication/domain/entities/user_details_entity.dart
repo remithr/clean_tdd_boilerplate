@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 class UserDetailsEntity extends Equatable {
   final String userID;
-  final String name;
-  final String email;
+  final String? name;
+  final String? email;
   const UserDetailsEntity({
     required this.userID,
-    required this.name,
-    required this.email,
+    this.name,
+    this.email,
   });
 
   @override

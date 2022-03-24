@@ -5,6 +5,8 @@
 import 'dart:async' as _i4;
 
 import 'package:clear_architecture/core/error/failures.dart' as _i5;
+import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart'
+    as _i7;
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart'
     as _i6;
 import 'package:clear_architecture/features/user_authentication/domain/repositories/user_repository.dart'
@@ -34,16 +36,16 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>> loginUser(
-          dynamic params) =>
+          _i7.UserCredsEntity? params) =>
       (super.noSuchMethod(Invocation.method(#loginUser, [params]),
               returnValue:
                   Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>.value(
                       _FakeEither_0<_i5.Failure, _i6.UserDetailsEntity>()))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>> fetchUserdetails(
-          dynamic userID) =>
-      (super.noSuchMethod(Invocation.method(#fetchUserdetails, [userID]),
+  _i4.Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>> fetchUserDetails(
+          String? userID) =>
+      (super.noSuchMethod(Invocation.method(#fetchUserDetails, [userID]),
               returnValue:
                   Future<_i2.Either<_i5.Failure, _i6.UserDetailsEntity>>.value(
                       _FakeEither_0<_i5.Failure, _i6.UserDetailsEntity>()))

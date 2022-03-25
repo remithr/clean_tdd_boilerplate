@@ -37,3 +37,12 @@ class FormatException extends Failure {
   @override
   List<Object?> get props => [exception];
 }
+
+class CacheException extends Failure {
+  final String exception;
+  const CacheException({
+    required this.exception,
+  });
+  @override
+  List<Object?> get props => [exception];
+}

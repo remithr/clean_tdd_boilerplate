@@ -1,10 +1,9 @@
-import 'package:clear_architecture/core/usecases/usecases.dart';
-import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart';
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-
+import '../../../../core/usecases/usecases.dart';
+import '../entities/authentication_status.dart';
+import '../entities/user_creds_entity.dart';
 import '../repositories/user_repository.dart';
 
 class AuthenticateUser

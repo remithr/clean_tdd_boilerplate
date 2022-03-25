@@ -1,4 +1,4 @@
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart';
+import '../../domain/entities/user_details_entity.dart';
 
 class UserDetailsModel extends UserDetailsEntity {
   const UserDetailsModel({

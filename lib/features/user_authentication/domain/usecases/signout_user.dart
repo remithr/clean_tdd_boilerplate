@@ -1,9 +1,8 @@
-import 'package:clear_architecture/core/usecases/usecases.dart';
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_id_param.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecases.dart';
 import '../entities/authentication_status.dart';
 import '../repositories/user_repository.dart';
 

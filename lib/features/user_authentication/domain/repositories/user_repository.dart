@@ -9,5 +9,5 @@ abstract class UserRepository {
   Future<Either<Failure, AuthenticationStatus>> loginUser(
       UserCredsEntity params);
   Future<Either<Failure, UserDetailsEntity>> fetchUserDetails(String userID);
-  Future<Either<Failure, bool>> logoutUser();
+  Future<Either<Failure, AuthenticationStatus>> logoutUser();
 }

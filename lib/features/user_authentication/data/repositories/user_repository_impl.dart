@@ -23,9 +23,17 @@ class UserRepositoryImpl implements UserRepository {
     required this.networkInfo,
   });
   @override
-  Future<Either<Failure, UserDetailsEntity>> fetchUserDetails(String userID) {
-    // TODO: implement fetchUserDetails
-    throw UnimplementedError();
+  Future<Either<Failure, UserDetailsEntity>> fetchUserDetails(
+      String userID) async {
+    // throw UnimplementedError();
+    await networkInfo.isConnected;
+    return const Right(
+      UserDetailsEntity(
+        userID: '1',
+        email: 'rem',
+        name: 'remith',
+      ),
+    );
   }
 
   @override

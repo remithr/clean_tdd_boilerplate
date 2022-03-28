@@ -4,7 +4,7 @@
 
 import 'dart:async' as _i5;
 
-import 'package:clear_architecture/core/platform/network_info.dart' as _i8;
+import 'package:clear_architecture/core/network/network_info.dart' as _i8;
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_local_datasource.dart'
     as _i7;
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_remote_datasource.dart'

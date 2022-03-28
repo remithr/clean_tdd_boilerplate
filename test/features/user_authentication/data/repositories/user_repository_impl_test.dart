@@ -1,6 +1,6 @@
 import 'package:clear_architecture/core/error/exceptions.dart';
 import 'package:clear_architecture/core/error/failures.dart';
-import 'package:clear_architecture/core/platform/network_info.dart';
+import 'package:clear_architecture/core/network/network_info.dart';
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_local_datasource.dart';
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_remote_datasource.dart';
 import 'package:clear_architecture/features/user_authentication/data/models/user_details_model.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../domain/usecases/login_user_test.mocks.dart';
 import 'user_repository_impl_test.mocks.dart';
 
 @GenerateMocks([UserRemoteDataSource, UserLocalDataSource, NetworkInfo])

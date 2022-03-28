@@ -49,7 +49,14 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<Failure, UserDetailsModel>> getUserDetailsFromCache() async {
-    return Right(await localDataSource.getUserDetailsFromCache());
+    // if (!await networkInfo.isConnected){
+    // }
+    try {
+      final localUser = await localDataSource.getUserDetailsFromCache();
+      return Right(localUser);
+    } on CacheException {
+      return Left(CacheFailure());
+    }
   }
 
   @override

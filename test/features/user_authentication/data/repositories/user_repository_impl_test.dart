@@ -98,7 +98,8 @@ void main() {
     setUp(() {
       when(mockNetwokInfo.isConnected).thenAnswer((_) async => false);
     });
-    test('should return data from local storage when network not available',
+    test(
+        'should return data from local storage when network not available and cache data is present',
         () async {
       // arrange
       when(mockUserLocalDataSource.getUserDetailsFromCache())
@@ -108,6 +109,18 @@ void main() {
       // act
       verify(mockUserLocalDataSource.getUserDetailsFromCache());
       expect(result, equals(const Right(umodel)));
+    });
+
+    test('should return failure when cache data is not present', () async {
+      // arrange
+      when(mockUserLocalDataSource.getUserDetailsFromCache()).thenThrow(
+        CacheException(),
+      );
+      // assert
+      final result = await repository.getUserDetailsFromCache();
+      // act
+      verify(mockUserLocalDataSource.getUserDetailsFromCache());
+      expect(result, equals(Left(CacheFailure())));
     });
   });
 }

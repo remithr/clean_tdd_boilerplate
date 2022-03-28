@@ -46,3 +46,8 @@ class CacheException extends Failure {
   @override
   List<Object?> get props => [exception];
 }
+
+class ServerFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}

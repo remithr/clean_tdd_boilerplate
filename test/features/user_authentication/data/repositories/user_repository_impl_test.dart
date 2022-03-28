@@ -1,3 +1,5 @@
+import 'package:clear_architecture/core/error/exceptions.dart';
+import 'package:clear_architecture/core/error/failures.dart';
 import 'package:clear_architecture/core/platform/network_info.dart';
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_local_datasource.dart';
 import 'package:clear_architecture/features/user_authentication/data/datasources/user_remote_datasource.dart';
@@ -64,7 +66,25 @@ void main() {
       final result = await repository.fetchUserDetails(umodel.userID);
       // act
       verify(mockUserRemoteDataSource.fetchUserDetails(umodel.userID));
-      expect(result, const Right(umodel));
+      expect(result, equals(const Right(umodel)));
+    });
+
+    test('should throw server exception on failure', () async {
+      // arrange
+      when(mockUserRemoteDataSource.fetchUserDetails(umodel.userID)).thenThrow(
+        ServerException(),
+      );
+      // assert
+      final result = await repository.fetchUserDetails(umodel.userID);
+      // act
+      verify(mockUserRemoteDataSource.fetchUserDetails(umodel.userID));
+      verifyZeroInteractions(mockUserLocalDataSource);
+      expect(
+        result,
+        equals(
+          Left(ServerFailure()),
+        ),
+      );
     });
   });
 
@@ -87,7 +107,7 @@ void main() {
       final result = await repository.fetchUserDetails(umodel.userID);
       // act
       verify(mockUserLocalDataSource.getUserDetailsFromCache());
-      expect(result, const Right(umodel));
+      expect(result, equals(const Right(umodel)));
     });
   });
 }

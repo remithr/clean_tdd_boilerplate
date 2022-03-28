@@ -82,6 +82,13 @@ class MockUserLocalDataSource extends _i1.Mock
               returnValue: Future<_i4.UserDetailsEntity>.value(
                   _FakeUserDetailsEntity_2()))
           as _i6.Future<_i4.UserDetailsEntity>);
+  @override
+  _i6.Future<_i4.UserDetailsEntity> saveUserDetailsToCache(
+          _i2.UserDetailsModel? umodel) =>
+      (super.noSuchMethod(Invocation.method(#saveUserDetailsToCache, [umodel]),
+              returnValue: Future<_i4.UserDetailsEntity>.value(
+                  _FakeUserDetailsEntity_2()))
+          as _i6.Future<_i4.UserDetailsEntity>);
 }
 
 /// A class which mocks [NetworkInfo].

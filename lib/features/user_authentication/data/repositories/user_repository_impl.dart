@@ -1,14 +1,11 @@
-import 'package:clear_architecture/core/platform/network_info.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_details_entity.dart';
-
-import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart';
-
-import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart';
-
-import 'package:clear_architecture/core/error/failures.dart';
-
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/platform/network_info.dart';
+import '../../domain/entities/authentication_status.dart';
+import '../../domain/entities/user_creds_entity.dart';
+import '../../domain/entities/user_details_entity.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../datasources/user_local_datasource.dart';
 import '../datasources/user_remote_datasource.dart';
@@ -26,14 +23,14 @@ class UserRepositoryImpl implements UserRepository {
   Future<Either<Failure, UserDetailsEntity>> fetchUserDetails(
       String userID) async {
     // throw UnimplementedError();
-    await networkInfo.isConnected;
-    return const Right(
-      UserDetailsEntity(
-        userID: '1',
-        email: 'rem',
-        name: 'remith',
-      ),
-    );
+    networkInfo.isConnected;
+    try {
+      final udetails = await remoteDataSource.fetchUserDetails(userID);
+      localDataSource.saveUserDetailsToCache(udetails);
+      return Right(udetails);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 
   @override

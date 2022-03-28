@@ -1,3 +1,4 @@
+import 'package:clear_architecture/features/user_authentication/data/models/user_details_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';
@@ -43,6 +44,18 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, AuthenticationStatus>> logoutUser() {
     // TODO: implement logoutUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, UserDetailsModel>> getUserDetailsFromCache() async {
+    return Right(await localDataSource.getUserDetailsFromCache());
+  }
+
+  @override
+  Future<Either<Failure, UserDetailsModel>> saveUserDetailsToCache(
+      UserDetailsModel umodel) {
+    // TODO: implement saveUserDetailsToCache
     throw UnimplementedError();
   }
 }

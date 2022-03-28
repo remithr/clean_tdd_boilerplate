@@ -104,7 +104,7 @@ void main() {
       when(mockUserLocalDataSource.getUserDetailsFromCache())
           .thenAnswer((_) async => umodel);
       // assert
-      final result = await repository.fetchUserDetails(umodel.userID);
+      final result = await repository.getUserDetailsFromCache();
       // act
       verify(mockUserLocalDataSource.getUserDetailsFromCache());
       expect(result, equals(const Right(umodel)));

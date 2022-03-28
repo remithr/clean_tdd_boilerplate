@@ -5,6 +5,8 @@
 import 'dart:async' as _i4;
 
 import 'package:clear_architecture/core/error/failures.dart' as _i5;
+import 'package:clear_architecture/features/user_authentication/data/models/user_details_model.dart'
+    as _i9;
 import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart'
     as _i6;
 import 'package:clear_architecture/features/user_authentication/domain/entities/user_creds_entity.dart'
@@ -59,4 +61,21 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
                       _i2.Either<_i5.Failure, _i6.AuthenticationStatus>>.value(
                   _FakeEither_0<_i5.Failure, _i6.AuthenticationStatus>()))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthenticationStatus>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i9.UserDetailsModel>>
+      getUserDetailsFromCache() => (super.noSuchMethod(
+              Invocation.method(#getUserDetailsFromCache, []),
+              returnValue:
+                  Future<_i2.Either<_i5.Failure, _i9.UserDetailsModel>>.value(
+                      _FakeEither_0<_i5.Failure, _i9.UserDetailsModel>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i9.UserDetailsModel>>);
+  @override
+  _i4.Future<
+      _i2.Either<_i5.Failure, _i9.UserDetailsModel>> saveUserDetailsToCache(
+          _i9.UserDetailsModel? umodel) =>
+      (super.noSuchMethod(Invocation.method(#saveUserDetailsToCache, [umodel]),
+              returnValue:
+                  Future<_i2.Either<_i5.Failure, _i9.UserDetailsModel>>.value(
+                      _FakeEither_0<_i5.Failure, _i9.UserDetailsModel>()))
+          as _i4.Future<_i2.Either<_i5.Failure, _i9.UserDetailsModel>>);
 }

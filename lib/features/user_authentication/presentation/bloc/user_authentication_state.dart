@@ -7,8 +7,13 @@ abstract class UserAuthenticationState extends Equatable {
   List<Object> get props => [];
 }
 
-class UserAuthenticationInitial extends UserAuthenticationState {}
+class UserNotAvailable extends UserAuthenticationState {}
 
-class UserAuthenticated extends UserAuthenticationState {}
+class UserDetailsLoading extends UserAuthenticationState {}
 
-class UserUnauthenticated extends UserAuthenticationState {}
+class UserDetailsLoaded extends UserAuthenticationState {}
+
+class UserDetailsFailure extends UserAuthenticationState {
+  final String message;
+  const UserDetailsFailure(this.message);
+}

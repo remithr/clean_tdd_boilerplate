@@ -7,17 +7,17 @@ abstract class UserAuthenticationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class UserLoggedIn extends UserAuthenticationEvent {
+class UserLogIn extends UserAuthenticationEvent {
   final String email;
   final String password;
 
-  const UserLoggedIn({
+  const UserLogIn({
     required this.email,
     required this.password,
   });
 }
 
-class UserLoggedOut extends UserAuthenticationEvent {}
+class UserLogOut extends UserAuthenticationEvent {}
 
 class FetchUserDetails extends UserAuthenticationEvent {
   final String userID;

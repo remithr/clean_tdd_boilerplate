@@ -9,16 +9,16 @@ class UserDetailsModel extends UserDetailsEntity {
 
   factory UserDetailsModel.fromJson(Map<String, dynamic> json) {
     return UserDetailsModel(
-      userID: (json['userID'] as num).toInt().toString(),
-      name: json['name'] as String,
+      userID: (json['user_id'] as num).toInt().toString(),
+      name: json['user_name'] as String,
       email: json['email'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'userID': userID,
-      'name': name,
+      'user_id': userID,
+      'user_name': name,
       'email': email,
     };
   }

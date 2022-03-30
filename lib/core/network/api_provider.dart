@@ -24,6 +24,7 @@ class ApiProvider {
     var responseJson = {};
     try {
       final Uri methodUrl = Uri.parse(baseUrl + endPoint);
+      print('Method URL here ====> $methodUrl');
       final response = await http.post(
         methodUrl,
         body: jsonEncode(params),
@@ -33,9 +34,11 @@ class ApiProvider {
           // 'auth': params['header']
         },
       );
-      responseJson = _response(response);
+      // responseJson = _response(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
+    } on FormatException {
+      throw FetchDataException('Invalid Response format');
     }
     return responseJson;
   }

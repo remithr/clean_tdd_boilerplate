@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clear_architecture/core/network/api_provider.dart';
 import 'package:clear_architecture/features/user_authentication/domain/entities/authentication_status.dart';
 
@@ -24,12 +26,21 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
 
   @override
   Future<UserDetailsModel> loginUser(UserCredsEntity params) async {
-    var resp = await apiProvider.post(endPoint: 'user/login', params: {
-      'user_email': params.email,
-      'user_password': params.password,
-    });
-    print(resp);
-    return resp;
+    print(params.email);
+    print(params.password);
+    try {
+      var resp = await apiProvider.post(endPoint: 'user/login', params: {
+        'user_email': params.email,
+        'user_password': params.password,
+      });
+      print('RESPONSE ====> ${resp.body}');
+      print(jsonDecode(resp.body)['data']);
+      return UserDetailsModel.fromJson(jsonDecode(resp.body)['data']);
+    } on FormatException catch (e) {
+      throw FormatException('Invalid format $e');
+    }
+
+    // return resp;
     // resp.fold((error) {
     //   print(error);
     // }, (success) {

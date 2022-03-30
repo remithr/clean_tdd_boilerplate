@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'dart:async';
 
 class ApiProvider {
-  static const String baseUrl = "BASE_URL_HERE/CONSTANTS FILE";
+  static const String baseUrl =
+      "http://52.172.231.36:8080/skyviews/wp-json/app/v1/";
 
   Future<dynamic> get({required String endPoint}) async {
     var responseJson = {};
@@ -43,7 +44,6 @@ class ApiProvider {
     switch (response.statusCode) {
       case 200:
         var responseJson = json.decode(response.body.toString());
-        // print(responseJson);
         return responseJson;
       case 400:
         throw BadRequestException(response.body.toString());

@@ -78,12 +78,10 @@ class MockUserLocalDataSource extends _i1.Mock
                   Future<_i2.UserDetailsModel>.value(_FakeUserDetailsModel_0()))
           as _i5.Future<_i2.UserDetailsModel>);
   @override
-  _i5.Future<_i2.UserDetailsModel> saveUserDetailsToCache(
-          _i2.UserDetailsModel? umodel) =>
+  _i5.Future<void> saveUserDetailsToCache(_i2.UserDetailsModel? umodel) =>
       (super.noSuchMethod(Invocation.method(#saveUserDetailsToCache, [umodel]),
-              returnValue:
-                  Future<_i2.UserDetailsModel>.value(_FakeUserDetailsModel_0()))
-          as _i5.Future<_i2.UserDetailsModel>);
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
 }
 
 /// A class which mocks [NetworkInfo].

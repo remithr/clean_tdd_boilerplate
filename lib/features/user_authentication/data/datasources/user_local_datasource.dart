@@ -7,7 +7,7 @@ import '../models/user_details_model.dart';
 
 abstract class UserLocalDataSource {
   Future<UserDetailsModel> getUserDetailsFromCache();
-  Future<UserDetailsModel> saveUserDetailsToCache(UserDetailsModel umodel);
+  Future<void> saveUserDetailsToCache(UserDetailsModel umodel);
 }
 
 const STORAGE_USER_DETAILS = 'STORAGE_USER_DETAILS';
@@ -32,8 +32,10 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   }
 
   @override
-  Future<UserDetailsModel> saveUserDetailsToCache(UserDetailsModel umodel) {
-    // TODO: implement saveUserDetailsToCache
-    throw UnimplementedError();
+  Future<void> saveUserDetailsToCache(UserDetailsModel umodel) {
+    return sharedPref.setString(
+      STORAGE_USER_DETAILS,
+      jsonEncode(umodel.toJson()),
+    );
   }
 }

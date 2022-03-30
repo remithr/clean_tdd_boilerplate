@@ -3,12 +3,23 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../domain/usecases/authenticate_user.dart';
+import '../../domain/usecases/signout_user.dart';
+
 part 'user_authentication_event.dart';
 part 'user_authentication_state.dart';
 
 class UserAuthenticationBloc
     extends Bloc<UserAuthenticationEvent, UserAuthenticationState> {
-  UserAuthenticationBloc() : super(UserNotAvailable()) {
+  final AuthenticateUser authenticateUser;
+  final SignOutUser signoutUser;
+  final FetchUserDetails fetchUser;
+
+  UserAuthenticationBloc({
+    required this.authenticateUser,
+    required this.signoutUser,
+    required this.fetchUser,
+  }) : super(UserNotAvailable()) {
     on<UserLogIn>(_loginUser);
     on<UserLogOut>(_logoutUser);
     on<FetchUserDetails>(_fetchUserDetails);

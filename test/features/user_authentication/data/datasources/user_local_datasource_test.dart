@@ -37,7 +37,7 @@ void main() {
       expect(result, equals(tUserModel));
     });
 
-    test('should throw a Cache exception if no storage available', () async {
+    test('should throw a Cache exception if storage not available', () async {
       // arrange
       when(mockSharedPreferences.getString(any)).thenReturn(null);
 
@@ -47,6 +47,24 @@ void main() {
       // assert
       ///eg. verify(mockInternetChecker.hasConnection);
       expect(() => result(), throwsA(const TypeMatcher<CacheException>()));
+    });
+    const testUserModel = UserDetailsModel(
+        email: 'remithr@yopmail.com', name: 'Remith', userID: '123');
+    test('should call shared preferences to set the user details in storage',
+        () async {
+      // arrange
+      when(mockSharedPreferences.setString(any, any))
+          .thenAnswer((_) async => true);
+      userLocalDataSource.saveUserDetailsToCache(testUserModel);
+      verify(mockSharedPreferences.setString(
+          STORAGE_USER_DETAILS, jsonEncode(testUserModel.toJson())));
+
+      // act
+      /// eg. final result = await networkInfoImpl.isConnected;
+
+      // assert
+      ///eg. verify(mockInternetChecker.hasConnection);
+      ///eg. expect(result, true);
     });
   });
 }
